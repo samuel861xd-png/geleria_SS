@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nuestras fechas 📅</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: #fff5fa;
+            overscroll-behavior: none;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #fff5fa,
+                #fce4f1,
+                #f8e8ff
+            );
+
+            font-family: "Dancing Script", cursive;
+
+            color: #76506a;
+
+            overflow-x: hidden;
+        }
+
+        .pagina {
+            width: 100%;
+            min-height: 100vh;
+
+            padding: 30px 20px;
+        }
+
+        h1 {
+            margin: 0 0 30px;
+
+            text-align: center;
+
+            font-size: 50px;
+        }
+
+        #registro {
+            width: 100%;
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 20px;
+        }
+
+        .entrada {
+            width: 100%;
+
+            padding: 22px;
+
+            background: rgba(255, 255, 255, 0.78);
+
+            border: 2px solid #d9a8c9;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .fecha {
+            width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid #d9a8c9;
+
+            border-radius: 15px;
+
+            background: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 21px;
+
+            color: #76506a;
+
+            outline: none;
+        }
+
+        .titulo {
+            width: 100%;
+
+            margin-top: 12px;
+
+            padding: 10px;
+
+            border: 1px solid #d9a8c9;
+
+            border-radius: 15px;
+
+            background: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 24px;
+
+            color: #76506a;
+
+            outline: none;
+        }
+
+        .descripcion {
+            width: 100%;
+
+            min-height: 100px;
+
+            margin-top: 12px;
+
+            padding: 10px;
+
+            border: 1px solid #d9a8c9;
+
+            border-radius: 15px;
+
+            background: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 21px;
+
+            color: #76506a;
+
+            resize: vertical;
+
+            outline: none;
+        }
+
+        .boton-agregar {
+            display: block;
+
+            width: 100%;
+            max-width: 600px;
+
+            margin: 30px auto 0;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #e8b6d5;
+
+            color: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 26px;
+
+            cursor: pointer;
+        }
+
+        .boton-agregar:active {
+            transform: scale(0.97);
+        }
+
+        .volver {
+            display: block;
+
+            width: fit-content;
+
+            margin: 25px auto 0;
+
+            color: #76506a;
+
+            font-size: 21px;
+
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="pagina">
+
+
+        <h1>📅 Nuestras fechas</h1>
+
+
+        <section id="registro">
+
+
+            <div class="entrada">
+
+                <input
+                    type="date"
+                    class="fecha"
+                >
+
+                <input
+                    type="text"
+                    class="titulo"
+                    placeholder="💗 ¿Qué pasó ese día?"
+                >
+
+                <textarea
+                    class="descripcion"
+                    placeholder="📝 Escribe aquí el recuerdo..."
+                ></textarea>
+
+            </div>
+
+
+        </section>
+
+
+        <button
+            class="boton-agregar"
+            onclick="agregarFecha()"
+        >
+            ＋ Agregar fecha
+        </button>
+
+
+        <a
+            href="menu.html"
+            class="volver"
+        >
+            💗 Volver al menú
+        </a>
+
+
+    </main>
+
+
+    <script>
+
+        function agregarFecha() {
+
+            const registro =
+                document.getElementById("registro");
+
+
+            const entrada =
+                document.createElement("div");
+
+
+            entrada.className = "entrada";
+
+
+            entrada.innerHTML = `
+
+                <input
+                    type="date"
+                    class="fecha"
+                >
+
+                <input
+                    type="text"
+                    class="titulo"
+                    placeholder="💗 ¿Qué pasó ese día?"
+                >
+
+                <textarea
+                    class="descripcion"
+                    placeholder="📝 Escribe aquí el recuerdo..."
+                ></textarea>
+
+            `;
+
+
+            registro.appendChild(entrada);
+
+        }
+
+    </script>
+
+</body>
+
+</html>

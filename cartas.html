@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cartas 💌</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: #fff5fa;
+            overscroll-behavior: none;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #fff5fa,
+                #fce4f1,
+                #f8e8ff
+            );
+
+            font-family: "Dancing Script", cursive;
+
+            color: #76506a;
+
+            overflow-x: hidden;
+        }
+
+        .pagina {
+            width: 100%;
+            min-height: 100vh;
+
+            padding: 30px 20px;
+        }
+
+        h1 {
+            margin: 0 0 30px;
+
+            text-align: center;
+
+            font-size: 50px;
+        }
+
+        #lista-cartas {
+            width: 100%;
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+        .carta {
+            width: 100%;
+
+            background: #fffafa;
+
+            border: 2px solid #d9a8c9;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.10);
+
+            overflow: hidden;
+
+            cursor: pointer;
+        }
+
+        .carta-cerrada {
+            min-height: 180px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
+
+            font-size: 28px;
+
+            background: #fce4f1;
+        }
+
+        .carta-cerrada .sobre {
+            font-size: 65px;
+
+            margin-bottom: 10px;
+        }
+
+        .carta-abierta {
+            display: none;
+
+            padding: 25px;
+
+            background: #fffafc;
+
+            cursor: default;
+        }
+
+        .carta.abierta .carta-cerrada {
+            display: none;
+        }
+
+        .carta.abierta .carta-abierta {
+            display: block;
+        }
+
+        .texto-carta {
+            width: 100%;
+
+            min-height: 220px;
+
+            padding: 15px;
+
+            border: 1px solid #e2bfd3;
+
+            border-radius: 15px;
+
+            background: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 22px;
+
+            color: #76506a;
+
+            resize: vertical;
+
+            outline: none;
+        }
+
+        .foto-carta {
+            width: 100%;
+
+            margin-top: 15px;
+
+            border-radius: 15px;
+
+            display: none;
+        }
+
+        .botones-carta {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 15px;
+        }
+
+        .botones-carta button {
+            flex: 1;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background: #e8b6d5;
+
+            color: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .boton-agregar {
+            display: block;
+
+            width: 100%;
+            max-width: 600px;
+
+            margin: 30px auto 0;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #e8b6d5;
+
+            color: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 26px;
+
+            cursor: pointer;
+        }
+
+        #selector-foto {
+            display: none;
+        }
+
+        .volver {
+            display: block;
+
+            width: fit-content;
+
+            margin: 25px auto 0;
+
+            color: #76506a;
+
+            font-size: 21px;
+
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="pagina">
+
+        <h1>💌 Nuestras cartas</h1>
+
+
+        <div id="lista-cartas"></div>
+
+
+        <button
+            class="boton-agregar"
+            onclick="agregarCarta()"
+        >
+            💌 Agregar carta
+        </button>
+
+
+        <input
+            type="file"
+            id="selector-foto"
+            accept="image/*"
+        >
+
+
+        <a
+            href="menu.html"
+            class="volver"
+        >
+            💗 Volver al menú
+        </a>
+
+    </main>
+
+
+    <script>
+
+        const listaCartas =
+            document.getElementById("lista-cartas");
+
+        const selectorFoto =
+            document.getElementById("selector-foto");
+
+        let cartaActual = null;
+
+
+        function agregarCarta() {
+
+            const carta =
+                document.createElement("div");
+
+            carta.className = "carta";
+
+
+            const cerrada =
+                document.createElement("div");
+
+            cerrada.className = "carta-cerrada";
+
+            cerrada.innerHTML = `
+                <div class="sobre">💌</div>
+                <div>Abrir carta</div>
+            `;
+
+
+            cerrada.onclick = function() {
+
+                carta.classList.add("abierta");
+
+            };
+
+
+            const abierta =
+                document.createElement("div");
+
+            abierta.className = "carta-abierta";
+
+
+            abierta.innerHTML = `
+
+                <textarea
+                    class="texto-carta"
+                    placeholder="Escribe aquí tu carta... 💗"
+                ></textarea>
+
+                <img
+                    class="foto-carta"
+                >
+
+                <div class="botones-carta">
+
+                    <button class="boton-foto">
+                        📷 Agregar foto
+                    </button>
+
+                    <button class="boton-cerrar">
+                        💌 Cerrar carta
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const botonFoto =
+                abierta.querySelector(".boton-foto");
+
+            const botonCerrar =
+                abierta.querySelector(".boton-cerrar");
+
+
+            botonFoto.onclick = function(e) {
+
+                e.stopPropagation();
+
+                cartaActual = abierta;
+
+                selectorFoto.click();
+
+            };
+
+
+            botonCerrar.onclick = function(e) {
+
+                e.stopPropagation();
+
+                carta.classList.remove("abierta");
+
+            };
+
+
+            carta.appendChild(cerrada);
+
+            carta.appendChild(abierta);
+
+            listaCartas.appendChild(carta);
+
+        }
+
+
+        selectorFoto.addEventListener(
+            "change",
+            function() {
+
+                const archivo = this.files[0];
+
+                if (!archivo || !cartaActual) {
+                    return;
+                }
+
+
+                const foto =
+                    cartaActual.querySelector(".foto-carta");
+
+
+                foto.src =
+                    URL.createObjectURL(archivo);
+
+
+                foto.style.display = "block";
+
+
+                this.value = "";
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

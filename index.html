@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nuestro mundo 💗</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+           
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #ffeaf2;
+            overflow: hidden;
+            
+        }
+
+        .bloqueo {
+            text-align: center;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .candado {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: flotar 2s infinite ease-in-out;
+        }
+
+        h1 {
+            color: #7a4055;
+            margin-bottom: 10px;
+            font-family: "Dancing Script", cursive;
+        }
+
+        .subtitulo {
+            color: #9b6478;
+            margin-bottom: 25px;
+           font-family: "Dancing Script", cursive; 
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e7a9bd;
+            border-radius: 15px;
+            outline: none;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-family: "Dancing Script", cursive;
+        }
+
+        button {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 15px;
+            background: #d9799b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-family: "Dancing Script", cursive;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #mensaje {
+            margin-top: 15px;
+            min-height: 24px;
+            color: #b34f72;
+            font-family: "Dancing Script", cursive;
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .corazon {
+            position: fixed;
+            pointer-events: none;
+            font-size: 24px;
+            animation: subir 1s forwards;
+        }
+
+        @keyframes subir {
+            from {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+    </style>
+</head>
+
+<body onclick="PlayAudio()">
+
+    <main class="bloqueo" id="pagina1">
+
+        <div class="candado" id="candado">
+            ❤️
+        </div>
+
+        <h1>recuerdos del amor de mi vida </h1>
+
+        <input
+            type="text"
+            id="contraseña"
+            placeholder="Ingrece la contraseña"  
+        >
+
+        <button id="entrar">
+            Entrar 💗
+        </button>
+
+        <p id="mensaje"></p>
+
+    </main>
+    
+    <audio id="musica1" loop>
+        <source src="" type="audio/mpeg">
+        este navegador no soporta formatos de audio
+    </audio>
+
+    <script>
+
+        const contraseñaCorrecta = "140226";
+
+        const entrada = document.getElementById("contraseña");
+        const boton = document.getElementById("entrar");
+        const mensaje = document.getElementById("mensaje");
+        const candado = document.getElementById("candado");
+
+        boton.addEventListener("click", comprobarContraseña);
+
+        entrada.addEventListener("keydown", function(evento) {
+            if (evento.key === "Enter") {
+                comprobarContraseña();
+            }
+        });
+
+        function comprobarContraseña() {
+
+            if (entrada.value === contraseñaCorrecta) {
+
+                window.location.href = "menu.html";
+
+                mensaje.textContent = "Bienvenida a nuestro mundo 💗";
+                candado.textContent = "❤️";
+
+              document.getElementById("pagina1").style.display = "none";
+              document.getElementById("pagina2").style.display = "block";
+
+            } else {
+
+                mensaje.textContent = "como que no te la sabes amor 🥺💔";
+                entrada.value = "";
+            }
+        }
+
+        document.addEventListener("click", function(evento) {
+
+            const corazon = document.createElement("span");
+
+            corazon.classList.add("corazon");
+            corazon.textContent = "";
+
+            corazon.style.left = evento.clientX + "px";
+            corazon.style.top = evento.clientY + "px";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(function() {
+                corazon.remove();
+            }, 1000);
+
+        });
+
+        function PlayAudio() {
+            document.getElementById("musica1").play();
+        }
+
+    </script>
+    
+
+</body>
+</html>

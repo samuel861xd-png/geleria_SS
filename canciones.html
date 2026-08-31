@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Canciones 🎵</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: #fff5fa;
+            overscroll-behavior: none;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #fff5fa,
+                #fce4f1,
+                #f8e8ff
+            );
+
+            font-family: "Dancing Script", cursive;
+
+            color: #76506a;
+
+            overflow-x: hidden;
+        }
+
+        .pagina {
+            width: 100%;
+            min-height: 100vh;
+
+            padding: 30px 20px;
+        }
+
+        h1 {
+            margin: 0 0 30px;
+
+            text-align: center;
+
+            font-size: 50px;
+        }
+
+        #lista-canciones {
+            width: 100%;
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+        .cancion {
+            width: 100%;
+
+            padding: 20px;
+
+            background: rgba(255, 255, 255, 0.75);
+
+            border: 2px solid #d9a8c9;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.10);
+        }
+
+        .cancion audio {
+            width: 100%;
+        }
+
+        .boton-agregar {
+            display: block;
+
+            width: 100%;
+            max-width: 600px;
+
+            margin: 30px auto 0;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #e8b6d5;
+
+            color: white;
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 26px;
+
+            cursor: pointer;
+        }
+
+        .boton-agregar:active {
+            transform: scale(0.97);
+        }
+
+        #selector-cancion {
+            display: none;
+        }
+
+        .volver {
+            display: block;
+
+            width: fit-content;
+
+            margin: 25px auto 0;
+
+            color: #76506a;
+
+            font-size: 21px;
+
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="pagina">
+
+        <h1>🎵 Nuestras canciones</h1>
+
+
+        <!-- AQUÍ APARECERÁN LAS CANCIONES -->
+
+        <div id="lista-canciones"></div>
+
+
+        <!-- BOTÓN PARA AGREGAR CANCIONES -->
+
+        <input
+            type="file"
+            id="selector-cancion"
+            accept="audio/*"
+        >
+
+        <button
+            class="boton-agregar"
+            onclick="document.getElementById('selector-cancion').click()"
+        >
+            🎵 Agregar canción
+        </button>
+
+
+        <a
+            href="menu.html"
+            class="volver"
+        >
+            💗 Volver al menú
+        </a>
+
+
+    </main>
+
+
+    <script>
+
+        const selectorCancion =
+            document.getElementById("selector-cancion");
+
+        const listaCanciones =
+            document.getElementById("lista-canciones");
+
+
+        selectorCancion.addEventListener("change", function() {
+
+            const archivo = this.files[0];
+
+            if (!archivo) {
+                return;
+            }
+
+
+            const contenedor =
+                document.createElement("div");
+
+            contenedor.className = "cancion";
+
+
+            const audio =
+                document.createElement("audio");
+
+            audio.controls = true;
+
+            audio.src =
+                URL.createObjectURL(archivo);
+
+
+            contenedor.appendChild(audio);
+
+            listaCanciones.appendChild(contenedor);
+
+
+            this.value = "";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

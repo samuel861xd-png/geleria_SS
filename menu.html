@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nuestro mundo 💗</title>
+
+    <!-- LETRA CURSIVA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        html {
+            width: 100%;
+            min-height: 100%;
+
+            background: linear-gradient(
+                135deg,
+                #fff5fa,
+                #fce4f1,
+                #f8e8ff
+            );
+
+            overscroll-behavior: none;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #fff5fa,
+                #fce4f1,
+                #f8e8ff
+            );
+
+            font-family: "Dancing Script", cursive;
+
+            color: #76506a;
+
+            overflow-x: hidden;
+            overscroll-behavior: none;
+        }
+
+        .contenedor-menu {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 20px;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: 52px;
+
+            text-align: center;
+
+            font-weight: 700;
+        }
+
+        .subtitulo {
+            margin: 5px 0 35px;
+
+            font-size: 25px;
+
+            text-align: center;
+        }
+
+        .menu {
+            width: 100%;
+            max-width: 500px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        .tarjeta {
+            width: 100%;
+            min-height: 100px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 15px 20px;
+
+            background: rgba(255, 255, 255, 0.78);
+
+            border: 2px solid rgba(217, 168, 201, 0.6);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.08);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .tarjeta:hover {
+            transform: translateX(6px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.13);
+        }
+
+        .tarjeta:active {
+            transform: scale(0.97);
+        }
+
+        .icono {
+            width: 65px;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            margin-right: 15px;
+        }
+
+        .tarjeta h2 {
+            margin: 0;
+
+            font-size: 29px;
+
+            font-weight: 700;
+        }
+
+        .tarjeta p {
+            margin: 3px 0 0;
+
+            font-size: 18px;
+
+            opacity: 0.75;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="contenedor-menu">
+
+        <h1>Nuestro mundo 💗</h1>
+
+        <p class="subtitulo">
+            Todo lo que quiero guardar contigo
+        </p>
+
+
+        <div class="menu">
+
+
+            <!-- FOTOS -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='fotos.html'"
+            >
+
+                <div class="icono">
+                    📸
+                </div>
+
+                <div>
+
+                    <h2>Fotos</h2>
+
+                    <p>Nuestros recuerdos</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- VIDEOS -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='videos.html'"
+            >
+
+                <div class="icono">
+                    🎬
+                </div>
+
+                <div>
+
+                    <h2>Videos</h2>
+
+                    <p>Momentos especiales</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CANCIONES -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='canciones.html'"
+            >
+
+                <div class="icono">
+                    🎵
+                </div>
+
+                <div>
+
+                    <h2>Canciones</h2>
+
+                    <p>La música de nosotros</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DIBUJOS -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='dibujos.html'"
+            >
+
+                <div class="icono">
+                    🎨
+                </div>
+
+                <div>
+
+                    <h2>Dibujos</h2>
+
+                    <p>Hechos con cariño</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARTAS -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='cartas.html'"
+            >
+
+                <div class="icono">
+                    💌
+                </div>
+
+                <div>
+
+                    <h2>Cartas</h2>
+
+                    <p>Palabras para ti</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGALOS -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='regalos.html'"
+            >
+
+                <div class="icono">
+                    🎁
+                </div>
+
+                <div>
+
+                    <h2>Regalos</h2>
+
+                    <p>Detalles especiales</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FECHAS -->
+
+            <div
+                class="tarjeta"
+                onclick="window.location.href='fechas.html'"
+            >
+
+                <div class="icono">
+                    📅
+                </div>
+
+                <div>
+
+                    <h2>Fechas</h2>
+
+                    <p>Días importantes</p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
